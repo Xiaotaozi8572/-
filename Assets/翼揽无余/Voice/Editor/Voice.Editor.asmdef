@@ -1,0 +1,20 @@
+{
+    "name": "Yilan.Voice.Editor",
+    "rootNamespace": "Yilan.Voice.Editor",
+    "references": [
+        "Yilan.Voice.Runtime",
+        "UnityEditor.TestRunner",
+        "Unity.TestTools"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,32 @@
+{
+  "wire": "voice-ws-v1",
+  "doc": "Authoritative set of wire close codes for the voice-ws-v1 adapter, extracted from src/voice/websocket_server.py.",
+  "close_codes": [
+    {
+      "code": 1000,
+      "name": "NORMAL",
+      "meaning": "normal closure (received close code 1000)"
+    },
+    {
+      "code": 1009,
+      "name": "MESSAGE_TOO_BIG",
+      "meaning": "standard websockets frame too large (over max_size)"
+    },
+    {
+      "code": 4400,
+      "name": "PROTOCOL_CLOSE_INVALID",
+      "meaning": "invalid protocol / VOICE_PROTOCOL_INVALID (bad field, JSON, type, sequence, size)"
+    },
+    {
+      "code": 4401,
+      "name": "PROTOCOL_CLOSE_BINDING",
+      "meaning": "VOICE_PROTOCOL_BINDING_MISMATCH (session_id/turn_id/audio_stream_id mismatch or already bound)"
+    },
+    {
+      "code": 4408,
+      "name": "PROTOCOL_CLOSE_TIMEOUT",
+      "meaning": "VOICE_SESSION_TIMEOUT (idle timeout)"
+    }
+  ],
+  "expected_set": [1000, 1009, 4400, 4401, 4408]
+}

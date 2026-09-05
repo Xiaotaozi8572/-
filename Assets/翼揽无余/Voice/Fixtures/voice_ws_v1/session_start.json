@@ -1,0 +1,22 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "upstream",
+  "event": "session.start",
+  "doc": "Client -> server. Establishes the session/turn/stream binding. Optional 'user_id'.",
+  "schema": {
+    "type": "session.start",
+    "session_id": "string (pattern ^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$)",
+    "turn_id": "string (pattern ^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$)",
+    "audio_stream_id": "string (pattern ^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$)",
+    "user_id": "optional string (same identifier pattern)"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "audio_stream_id"],
+  "optional_keys": ["user_id"],
+  "example": {
+    "type": "session.start",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "audio_stream_id": "stream-audio-001",
+    "user_id": "u-1001"
+  }
+}

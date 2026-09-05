@@ -1,0 +1,243 @@
+using System;
+using System.Threading.Tasks;
+using Yilan.Voice.Runtime.Capture;
+using Yilan.Voice.Runtime.Metrics;
+using Yilan.Voice.Runtime.Pico;
+using Yilan.Voice.Runtime.Playback;
+using Yilan.Voice.Runtime.Session;
+using Yilan.Voice.Runtime.Transport;
+using Yilan.Voice.Runtime.UI;
+
+namespace Yilan.Voice.Runtime.Bootstrap
+{
+    /// <summary>
+    /// Pure C# composition root over the existing transport/session/capture/UI components.
+    /// Capture pumping forwards each 20ms PCM16 frame upstream (audio.frame header +
+    /// binary body); TTS playback driving is owned by the bootstrap wiring.
+    /// </summary>
+    public sealed class VoiceClientRuntime : IDisposable
+    {
+        private readonly VoiceClientConfig _config;
+        private readonly IVoiceSocket _socket;
+        private readonly Func<VoiceClientConfig, Task<bool>> _healthProbe;
+        private readonly PicoMicrophonePermission _permission;
+        private readonly UnityMicrophoneSource _microphone;
+        private readonly ITtsPlayback _playback;
+        private readonly VoiceMetricsRecorder _metrics;
+
+        private VoiceSessionController _controller;
+        private VoiceViewModel _viewModel;
+        private bool _disposed;
+
+        public VoiceClientRuntime(
+            VoiceClientConfig config,
+            IVoiceSocket socket,
+            Func<VoiceClientConfig, Task<bool>> healthProbe,
+            PicoMicrophonePermission permission,
+            UnityMicrophoneSource microphone,
+            ITtsPlayback playback,
+            VoiceMetricsRecorder metrics)
+        {
+            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _socket = socket ?? throw new ArgumentNullException(nameof(socket));
+            _healthProbe = healthProbe ?? throw new ArgumentNullException(nameof(healthProbe));
+            _permission = permission ?? throw new ArgumentNullException(nameof(permission));
+            _microphone = microphone ?? throw new ArgumentNullException(nameof(microphone));
+            _playback = playback ?? throw new ArgumentNullException(nameof(playback));
+            _metrics = metrics ?? throw new ArgumentNullException(nameof(metrics));
+        }
+
+        public VoiceSessionController Controller => _controller;
+        public VoiceViewModel ViewModel => _viewModel;
+        public IVoiceSocket Socket => _socket;
+
+        /// <summary>Test-only observation hook for release order verification.</summary>
+        public Action<string> DisposeObserver { get; set; }
+
+        public async Task<VoiceCommandResult> StartAsync()
+        {
+            ThrowIfDisposed();
+
+            if (_controller != null)
+            {
+                return await _controller.ConnectAsync().ConfigureAwait(false);
+            }
+
+            bool healthy;
+            try
+            {
+                healthy = await _healthProbe(_config).ConfigureAwait(false);
+            }
+            catch
+            {
+                healthy = false;
+            }
+
+            if (!healthy)
+            {
+                return VoiceCommandResult.TransportFailed;
+            }
+
+            _controller = new VoiceSessionController(_config, _socket, _playback)
+            {
+                HealthProbe = _ => Task.FromResult(true)
+            };
+            _viewModel = new VoiceViewModel(_controller);
+            return await _controller.ConnectAsync().ConfigureAwait(false);
+        }
+
+        public Task<VoiceCommandResult> BeginCaptureAsync()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return Task.FromResult(VoiceCommandResult.InvalidState);
+
+            if (_permission.EnsurePermission() != MicrophonePermissionStatus.Granted)
+            {
+                return Task.FromResult(VoiceCommandResult.InvalidState);
+            }
+
+            var result = _controller.RecordStartAsync();
+            if (result != VoiceCommandResult.Ok && result != VoiceCommandResult.Idempotent)
+            {
+                return Task.FromResult(result);
+            }
+
+            if (!_microphone.IsRecording)
+            {
+                if (!_microphone.Start(string.Empty, Pcm16AudioConstants.SampleRateHz, 1, 1))
+                {
+                    return Task.FromResult(VoiceCommandResult.InvalidState);
+                }
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public Task<VoiceCommandResult> PumpAsync(int maxFramesPerUpdate)
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return Task.FromResult(VoiceCommandResult.InvalidState);
+            if (!_microphone.IsRecording) return Task.FromResult(VoiceCommandResult.Idempotent);
+
+            int frameBudget = maxFramesPerUpdate > 0 ? maxFramesPerUpdate : 1;
+            _microphone.PollOnce();
+            var result = VoiceCommandResult.Ok;
+            while (frameBudget-- > 0 && _microphone.TryTakeFrame(out var frame))
+            {
+                // P0-1: forward each captured 20ms PCM16 frame upstream. The wire
+                // protocol is one audio.frame JSON header immediately followed by
+                // one binary frame; the server recomputes RMS energy from the
+                // payload, so the client-side header energy stays informational (0).
+                var send = _controller.SendAudioFrameAsync(
+                    _controller.NextAudioSequence, frame, 0f);
+                if (send != VoiceCommandResult.Ok)
+                {
+                    result = send;
+                    break;
+                }
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public Task<VoiceCommandResult> EndCaptureAsync()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return Task.FromResult(VoiceCommandResult.InvalidState);
+
+            if (_microphone.IsRecording)
+            {
+                _microphone.Stop();
+            }
+
+            return Task.FromResult(_controller.RecordEndAsync());
+        }
+
+        public Task<VoiceCommandResult> CancelAsync()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return Task.FromResult(VoiceCommandResult.InvalidState);
+
+            if (_microphone.IsRecording)
+            {
+                _microphone.Stop();
+            }
+
+            return Task.FromResult(_controller.CancelAsync());
+        }
+
+        public async Task<VoiceCommandResult> PauseAsync()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return VoiceCommandResult.InvalidState;
+
+            if (_microphone.IsRecording)
+            {
+                _microphone.Stop();
+            }
+
+            return await _controller.PauseAsync().ConfigureAwait(false);
+        }
+
+        public VoiceCommandResult Resume()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return VoiceCommandResult.InvalidState;
+            _permission.ResetSession();
+            return _controller.Resume();
+        }
+
+        /// <summary>
+        /// P1-5: full resume path after <see cref="PauseAsync"/>. Reset the permission
+        /// session so the next capture re-validates RECORD_AUDIO, then re-open the
+        /// WebSocket on the SAME session id — the server preserved the conversation
+        /// context and its finished_turn_ids, so the controller keeps incrementing
+        /// its turn counter (never reuses a finished turn id). Only legal from the
+        /// quiescent Idle state PauseAsync settled into.
+        /// </summary>
+        public async Task<VoiceCommandResult> ResumeAsync()
+        {
+            ThrowIfDisposed();
+            if (_controller == null) return VoiceCommandResult.InvalidState;
+
+            var resumed = Resume();
+            if (resumed != VoiceCommandResult.Ok) return resumed;
+
+            return await _controller.ConnectAsync().ConfigureAwait(false);
+        }
+
+        public void Dispose()
+        {
+            if (_disposed) return;
+            _disposed = true;
+
+            DisposeObserver?.Invoke("metrics");
+            _metrics.Dispose();
+
+            DisposeObserver?.Invoke("viewModel");
+            _viewModel?.Dispose();
+            _viewModel = null;
+
+            DisposeObserver?.Invoke("controller");
+            _controller?.Dispose();
+            _controller = null;
+
+            DisposeObserver?.Invoke("playback");
+            _playback.Dispose();
+
+            DisposeObserver?.Invoke("microphone");
+            _microphone.Dispose();
+
+            DisposeObserver?.Invoke("socket");
+            _socket.Dispose();
+        }
+
+        private void ThrowIfDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(nameof(VoiceClientRuntime));
+            }
+        }
+    }
+}

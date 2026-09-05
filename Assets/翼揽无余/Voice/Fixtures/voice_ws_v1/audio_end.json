@@ -1,0 +1,19 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "upstream",
+  "event": "audio.end",
+  "doc": "Client -> server. Marks the end of audio input for the bound turn. After this the server stops accepting further audio.frame within this input; the endpoint is closed via transport.close_input().",
+  "schema": {
+    "type": "audio.end",
+    "session_id": "string",
+    "turn_id": "string",
+    "audio_stream_id": "string"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "audio_stream_id"],
+  "example": {
+    "type": "audio.end",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "audio_stream_id": "stream-audio-001"
+  }
+}

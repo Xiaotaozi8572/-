@@ -1,0 +1,26 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "downstream",
+  "event": "answer.display",
+  "doc": "Server -> client. Emitted for status == 'answered'. Carries the final answer id, the evidence package id, and the public answer envelope.",
+  "schema": {
+    "type": "answer.display",
+    "session_id": "string",
+    "turn_id": "string",
+    "answer_id": "string",
+    "evidence_package_id": "string",
+    "answer": "object (public answer envelope)"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "answer_id", "evidence_package_id", "answer"],
+  "example": {
+    "type": "answer.display",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "answer_id": "answer-9001",
+    "evidence_package_id": "evidence-0771",
+    "answer": {
+      "content": "手套箱内冷却液位于副翼下方的仪表区。",
+      "source": "handbook"
+    }
+  }
+}

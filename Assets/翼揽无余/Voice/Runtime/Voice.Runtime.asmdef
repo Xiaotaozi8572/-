@@ -1,0 +1,16 @@
+{
+    "name": "Yilan.Voice.Runtime",
+    "rootNamespace": "Yilan.Voice.Runtime",
+    "references": [
+        "colyseus.nativewebsocket"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

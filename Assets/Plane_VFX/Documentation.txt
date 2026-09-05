@@ -1,0 +1,15 @@
+For examples of the Jet Engine flames, load the Plane_VFX.unity scene. Alternatively, make your chosen flames effect Prefab (in the Prefabs folder) a child of your aircraft, scaling the gameobject  to the appropriate size.
+
+Note that the jet heat haze element of the effect is only available for the URP and HDRP pipelines. In addition, for the heat haze to work correctly under URP, please follow the following steps:
+Got to the menu item Edit -> Project Settings, then in settings window, choose Graphics on the left, then click on currently active Scriptable Render Pipeline Settings(at the very top) to show's its location in your project (it will be highlighted in your project window at the bottom of the screen). Double click this file to open it, then in the Inspector window (on the right of the scree), make sure both Depth Texture and Opaque Texture have a tick by them.
+
+
+
+window rain Lit or Unlit prefab into your scene.
+
+
+The effect can be scaled up or down to fit any window, however when scaling the parent node this 
+should be a uniform scale in the X and Y axis to avoid distorting the effect. To create a non-square 
+shape, change the Shape node scale of the three child particle effects.
+Have fun! 
+If you have any questions then please get in touch at contact@realtimevfxstore.co

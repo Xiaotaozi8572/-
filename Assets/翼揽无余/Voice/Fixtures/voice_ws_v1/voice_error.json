@@ -1,0 +1,17 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "downstream",
+  "event": "voice.error",
+  "doc": "Server -> client. Emitted via _send_error before a protocol close, and via _send_error_and_close immediately before close(code, reason=code). Example codes include VOICE_PROTOCOL_INVALID, VOICE_PROTOCOL_BINDING_MISMATCH, VOICE_TTS_ERROR, VOICE_TRANSPORT_ERROR, VOICE_SESSION_TIMEOUT.",
+  "schema": {
+    "type": "voice.error",
+    "code": "string",
+    "field": "string"
+  },
+  "required_keys": ["type", "code", "field"],
+  "example": {
+    "type": "voice.error",
+    "code": "VOICE_PROTOCOL_INVALID",
+    "field": "session.start"
+  }
+}

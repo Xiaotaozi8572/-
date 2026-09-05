@@ -1,0 +1,61 @@
+﻿{
+    "wire":  "voice-ws-v1",
+    "files":  [
+                  {
+                      "path":  "answer_display.json",
+                      "sha256":  "26641E8717717062CA23A08FED95BF3EC2AD57D8CCF889D06B454024EABD8F56"
+                  },
+                  {
+                      "path":  "audio_end.json",
+                      "sha256":  "C6B7D13143AAA3BE8222AFC914134455A4D648E848BC50B3DA17CC8715164460"
+                  },
+                  {
+                      "path":  "audio_frame.json",
+                      "sha256":  "2A53C97D063C8CF5045812E772D8D1F68559F6CC9FE025208D8538461764EB54"
+                  },
+                  {
+                      "path":  "clarification_required.json",
+                      "sha256":  "CBF925BF24F84049EC7FD6DD0604FCD5E70AF043CB19BF1BE786FF5EA3169DC0"
+                  },
+                  {
+                      "path":  "close_codes.json",
+                      "sha256":  "0E8A0B402AD1D8DB7324CB3282BE0CDF3896FE614F6FA3EAA0A2541D1067517E"
+                  },
+                  {
+                      "path":  "invalid_tts_bare_binary.json",
+                      "sha256":  "06272C0036F8923707974FE7B041DB594A8259D2448E3F638CB5445846070A79"
+                  },
+                  {
+                      "path":  "invalid_tts_double_header.json",
+                      "sha256":  "A3E2EA956B8A10182432A310D9B1A1854D30A26D454C9AA7FD7D61FB0288A560"
+                  },
+                  {
+                      "path":  "mismatch_ids.json",
+                      "sha256":  "D62A0CD64C63E701815FB86223346B36DD1874918DF112B813287A043C38203D"
+                  },
+                  {
+                      "path":  "session_cancel.json",
+                      "sha256":  "6BC682A9750A19DA9417BC0A2C9AB5E76635360263C27965257A4F51818DC37C"
+                  },
+                  {
+                      "path":  "session_start.json",
+                      "sha256":  "D2588D8E2EE4FFCE138963F000132FBC92C2B9921DC3CC24EDB7C7BD97156A1E"
+                  },
+                  {
+                      "path":  "tts_frame.json",
+                      "sha256":  "1D0C9A7B789DD23A749361B8A4CB3A7405EFBB7E7777D41E0EA0A813CC73780D"
+                  },
+                  {
+                      "path":  "tts_header_binary_sequence.json",
+                      "sha256":  "F60F2E7AA3667E4990A130DB3FCF8E1CE4E06A92D031A135E7511AC949C038F8"
+                  },
+                  {
+                      "path":  "voice_error.json",
+                      "sha256":  "17DA5EE5F84C4E872989F4E7FDC0760EBE713327C06743BA27CF4235A45CE0A7"
+                  },
+                  {
+                      "path":  "voice_state_session_started.json",
+                      "sha256":  "E4AE386FD254BC0673E59D4A06919BE7C1B046C7BAC21EF1A82F1B6D97D5A43E"
+                  }
+              ]
+}

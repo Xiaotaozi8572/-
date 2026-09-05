@@ -1,0 +1,56 @@
+{
+  "wire": "voice-ws-v1",
+  "event": "tts.frame sequence",
+  "doc": "CANONICAL legal sequence: each tts.frame TEXT header is IMMEDIATELY followed by ONE binary PCM16 body. No other message may appear between a header and its binary. The binary consumes and clears the pending header.",
+  "binary_spec": {
+    "format": "PCM16 signed little-endian",
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "frame_duration_ms": 20,
+    "bytes_per_frame": 640,
+    "note": "Fixture stores PCM as base64 only for illustration; the real wire carries raw bytes. base64 below decodes to 640 bytes of 0x00 (silence) for illustration/match."
+  },
+  "fence": "REJECT: two consecutive tts.frame text headers with no binary in between (see invalid_tts_double_header.json). REJECT: a bare binary with no pending header (see invalid_tts_bare_binary.json).",
+  "sequence": [
+    {
+      "kind": "text",
+      "event": "tts.frame",
+      "payload": {
+        "type": "tts.frame",
+        "session_id": "vr-test-session-001",
+        "turn_id": "turn-0001",
+        "playback_id": "playback-0501",
+        "sequence": 0,
+        "codec": "pcm16",
+        "duration_ms": 20,
+        "is_final": false
+      }
+    },
+    {
+      "kind": "binary",
+      "event": "tts binary body",
+      "description": "Immediately follows the previous header. 640 bytes PCM16.",
+      "base64_pcm16_640_bytes_zero": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    },
+    {
+      "kind": "text",
+      "event": "tts.frame",
+      "payload": {
+        "type": "tts.frame",
+        "session_id": "vr-test-session-001",
+        "turn_id": "turn-0001",
+        "playback_id": "playback-0501",
+        "sequence": 1,
+        "codec": "pcm16",
+        "duration_ms": 20,
+        "is_final": true
+      }
+    },
+    {
+      "kind": "binary",
+      "event": "tts binary body",
+      "description": "Immediately follows the previous header. 640 bytes PCM16 (zero).",
+      "base64_pcm16_640_bytes_zero": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    }
+  ]
+}

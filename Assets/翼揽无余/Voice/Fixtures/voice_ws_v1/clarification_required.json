@@ -1,0 +1,19 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "downstream",
+  "event": "clarification.required",
+  "doc": "Server -> client. Two occurrence paths: (a) result.status == 'clarification' -> reason = voice_input_unclear (or the stored clarification_reason); (b) utterance too long -> reason = 'utterance_too_long'. Carries the bounded turn ids.",
+  "schema": {
+    "type": "clarification.required",
+    "session_id": "string",
+    "turn_id": "string",
+    "reason": "string (e.g. 'voice_input_unclear' | 'utterance_too_long')"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "reason"],
+  "example": {
+    "type": "clarification.required",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "reason": "voice_input_unclear"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "downstream",
+  "event": "voice.state",
+  "status": "session.started",
+  "doc": "Server -> client. Sent once after a successful session.start. Only the status=session.started variant carries protocol_version=voice-ws-v1. Other statuses (scene.updated, audio.input_ended, frame_accepted, partial, pre_retrieval, clarification, answered, playback.completed, playback.failed, barge_in.*) do NOT carry protocol_version.",
+  "schema": {
+    "type": "voice.state",
+    "session_id": "string",
+    "turn_id": "string",
+    "state": "string (session state value)",
+    "status": "string (event status)",
+    "protocol_version": "string (ONLY present when status=session.started, value 'voice-ws-v1')"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "state", "status"],
+  "protocol_version_present_only_when": "status == 'session.started'",
+  "example": {
+    "type": "voice.state",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "state": "listening",
+    "status": "session.started",
+    "protocol_version": "voice-ws-v1"
+  }
+}

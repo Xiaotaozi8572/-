@@ -1,0 +1,27 @@
+{
+  "wire": "voice-ws-v1",
+  "direction": "downstream",
+  "event": "tts.frame",
+  "doc": "Server -> client. TEXT header emitted by WebSocketAudioTransport.send_audio IMMEDIATELY BEFORE the binary chunk.payload on the same wire (no other message between them). Only when chunk.codec is non-empty is the header emitted; the binary always follows. Semantics: the header sets pending; the immediately-following binary consumes and clears it. A second tts.frame header while pending is rejected; a bare binary without a pending header is rejected.",
+  "schema": {
+    "type": "tts.frame",
+    "session_id": "string",
+    "turn_id": "string",
+    "playback_id": "string",
+    "sequence": "int >= 0",
+    "codec": "string, length <= 32",
+    "duration_ms": "int >= 0",
+    "is_final": "bool"
+  },
+  "required_keys": ["type", "session_id", "turn_id", "playback_id", "sequence", "codec", "duration_ms", "is_final"],
+  "example": {
+    "type": "tts.frame",
+    "session_id": "vr-test-session-001",
+    "turn_id": "turn-0001",
+    "playback_id": "playback-0501",
+    "sequence": 0,
+    "codec": "pcm16",
+    "duration_ms": 20,
+    "is_final": false
+  }
+}

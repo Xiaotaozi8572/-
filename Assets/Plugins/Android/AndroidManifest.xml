@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  VR3-T09: minimal main AndroidManifest for the Yilan voice capture path.
+  It declares ONLY the two permissions this feature needs (INTERNET for the voice
+  WebSocket transport, RECORD_AUDIO for the live-microphone capture) plus an optional,
+  non-required microphone hardware feature.
+
+  DEVICE-TEST FIX (Phase 10 first-device session): a custom main manifest REPLACES
+  Unity's launcher manifest template, so the launcher intent-filter for
+  UnityPlayerActivity is NOT injected by the merger (proven on-device: app invisible
+  in the PICO library, `am start` denied "not exported"). The activity below declares
+  the MAIN/LAUNCHER entry explicitly, with android:exported="true" (mandatory at
+  targetSdk 35). PICO SDK meta-data/permissions still merge in from its AARs at build
+  time. The package name is fixed and MUST remain com.TianWenZhiDa.pico4.
+-->
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.TianWenZhiDa.pico4"
+    android:versionCode="1"
+    android:versionName="0.1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <application>
+        <activity
+            android:name="com.unity3d.player.UnityPlayerActivity"
+            android:theme="@style/UnityThemeSelector"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+        </activity>
+    </application>
+
+</manifest>

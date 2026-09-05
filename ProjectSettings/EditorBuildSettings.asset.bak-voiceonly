@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: "Assets/\u5929\u95EE\u667A\u7B54/Scenes\u5929\u95EE\u667A\u7B54/01-\u4E3B\u9875\u9762\u6A21\u5F0F\u9009\u62E9.unity"
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: "Assets/\u5929\u95EE\u667A\u7B54/Scenes\u5929\u95EE\u667A\u7B54/\u4EC5UI.unity"
+    guid: 1a62b3bedb8f01e4c9a55474a1877989
+  - enabled: 0
+    path: "Assets/\u5929\u95EE\u667A\u7B54/Scenes\u5929\u95EE\u667A\u7B54/03-\u98DE\u673Ac919.unity"
+    guid: 121c5cf5f68056c4ea94fc77ea9fbc46
+  - enabled: 0
+    path: Assets/Samples/XR Interaction Toolkit/2.6.4/Hands Interaction Demo/HandsDemoScene.unity
+    guid: 3ff35cecbcc52cc42945cf531638a60a
+  - enabled: 1
+    path: "Assets/\u516C\u7528\u6587\u4EF6/01_\u7247\u5934.unity"
+    guid: 0caf0c7281fbae6488be6cf50d56ad1e
+  - enabled: 1
+    path: "Assets/\u516C\u7528\u6587\u4EF6/02-\u673A\u578B\u9009\u62E9\u9875\u9762\u5171\u7528.unity"
+    guid: 62d5c65c7a97f2c408cb953b4d3ae6d1
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/03_\u7FFC\u63FD\u65E0\u4F59\u98DE\u673A.unity"
+    guid: 92f3c08aa5a3aa34ab15230d574d2132
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/04_\u90E8\u4EF6_\u53D1\u52A8\u673A.unity"
+    guid: 5d55fb2023f7f84419776c9b68acf9f8
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/04_\u90E8\u4EF6_\u6321\u98CE\u73BB\u7483.unity"
+    guid: 35ddafd7989917545832b1a791534384
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/04_\u90E8\u4EF6_\u673A\u5934.unity"
+    guid: e1085513cb5e13346adae683fa7b54bc
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/04_\u90E8\u4EF6_\u673A\u5C3E.unity"
+    guid: 0729d80cd9c8ec946ba949cf7e9e3fe8
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/04_\u90E8\u4EF6_\u673A\u7FFC.unity"
+    guid: 76c05d3c4524d9a418826bdefd0b8abd
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/05_\u7206\u70B8\u56FE.unity"
+    guid: f71533c80a6a81e45968043cdbcd4f83
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/06_\u6A21\u62DF\u9A7E\u9A76\u8231.unity"
+    guid: ec13638db2846ba4f8a7c4d500e8c8d7
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/07_\u865A\u62DF\u8BFE\u58022.unity"
+    guid: 2fdd71bfe05783a4d909f5402084b4de
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/07_\u865A\u62DF\u8BFE\u5802.unity"
+    guid: cbdd0280bdabb134782fcc714902eca6
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/c919\u573A\u666F/08_\u7B54\u9898\u9875\u9762.unity"
+    guid: 3a80ba2bf2171e649831923c9afd1a26
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/04_01\u90E8\u4EF6_\u4E94\u53F6\u4E3B\u65CB\u7FFC.unity"
+    guid: 567c083c72c184e44a7340366e00c07f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/03_01\u7FFC\u63FD\u65E0\u4F59\u98DE\u673A\u76F420.unity"
+    guid: f4909c5e54eb63948b1c02db072ba2ec
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/04_01\u90E8\u4EF6_\u526A\u5200\u5F0F\u5C3E\u6868.unity"
+    guid: 49784387b8eae634e938b2df3781c774
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/04_01\u90E8\u4EF6_\u53D1\u52A8\u673A.unity"
+    guid: b8c355cb4d1e9b64a897e3c8f160cb9f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/04_01\u90E8\u4EF6_\u6321\u98CE\u73BB\u7483.unity"
+    guid: 0d7fc0198de3a8d408f9bfc1b261a5b6
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/04_01\u90E8\u4EF6_\u8D77\u843D\u67B6.unity"
+    guid: 2943673525e1bb74bb5c60564a3f259f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/06_01\u6A21\u62DF\u9A7E\u9A76\u8231.unity"
+    guid: 0f5fdaf1ade1d3d4787c39717502d7ed
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/07_01\u865A\u62DF\u8BFE\u5802.unity"
+    guid: 4865e1fd335d52748a11fcf18b700b7f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/07_01\u865A\u62DF\u8BFE\u58022.unity"
+    guid: 9d2f071485025c34684ae8b454d8c14e
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/08_01\u7B54\u9898\u9875\u9762.unity"
+    guid: b73a96567cbf7e54c8447b04b92d189f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/03_02\u7FFC\u63FD\u65E0\u4F59\u98DE\u673A\u6B7C20.unity"
+    guid: c9ab444c1a6fbfe44a783f80a78ac80c
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/05_02\u7206\u70B8\u56FE.unity"
+    guid: e2b4e4c564fa79d48b4fe89a5463e310
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/06_02\u6A21\u62DF\u9A7E\u9A76\u8231.unity"
+    guid: 12eeed6f1656a7f419bc3c53b8289de6
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/07_02\u865A\u62DF\u8BFE\u5802.unity"
+    guid: a2882f4a8a036db42bc8f182d8e47da4
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/08_02\u7B54\u9898\u9875\u9762.unity"
+    guid: fc03077f5017ac64fb35d6c5482753f8
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/04_02\u90E8\u4EF6_\u53D1\u52A8\u673A.unity"
+    guid: d5233ccdf1058874ba77013b57078388
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/04_02\u90E8\u4EF6_\u9E2D\u5F0F\u6C14\u52A8\u5E03\u5C40.unity"
+    guid: ef9cc5d46dbfcb047a07d90fb536646d
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/04_02\u90E8\u4EF6_\u5168\u52A8\u53CC\u5782\u5C3E.unity"
+    guid: dac1743cd1899da4cbd60f541943a1cf
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/07_02\u865A\u62DF\u8BFE\u58022.unity"
+    guid: 06c31038f59591f47a5c8a584c4661f4
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u76F420\u573A\u666F/05_01\u7206\u70B8\u56FE.unity"
+    guid: f51d11e389e137f43b27363696e2990e
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/03_03\u7FFC\u63FD\u65E0\u4F59\u98DE\u673A\u8FD020.unity"
+    guid: a7be3c82df22e3d4dad3b562e10e2e48
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/04_03\u90E8\u4EF6_\u53D1\u52A8\u673A.unity"
+    guid: 8fa0177174d0b71488aa228b9f3550e0
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/04_03\u90E8\u4EF6_\u5706\u6DA6\u673A\u5934.unity"
+    guid: 73f30f5c760aa3b41b0e72c7c15bd93d
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/04_03\u90E8\u4EF6_\u4E2D\u592E\u7FFC\u76D2.unity"
+    guid: 07b298b84c8a33545b9ca3ac1fe1954f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/04_03\u90E8\u4EF6_\u673A\u7FFC.unity"
+    guid: fc9a1d2346abbae449d7d51bb8fb81ef
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/04_03\u90E8\u4EF6_T\u578B\u9AD8\u5E73\u5C3E.unity"
+    guid: 37ff2c524a640fc47afbf45c04cc099b
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/05_03\u7206\u70B8\u56FE.unity"
+    guid: c856ed9221ff4814a828aa189657a97f
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/06_03\u6A21\u62DF\u9A7E\u9A76\u8231.unity"
+    guid: 4ec18902bf35e1240b817584f67b8095
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/07_03\u865A\u62DF\u8BFE\u5802.unity"
+    guid: ba4db6af60d7a0141980d2b7d7d96b09
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/07_03\u865A\u62DF\u8BFE\u58022.unity"
+    guid: cba1ef4549cd02e40b554cd921f066e2
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u8FD020\u573A\u666F/08_03\u7B54\u9898\u9875\u9762.unity"
+    guid: 31d1c99aeaf277d44a92eeb0ca513e43
+  - enabled: 1
+    path: "Assets/\u7FFC\u63FD\u65E0\u4F59/Scenes\u7FFC\u63FD\u65E0\u4F59/\u6B7C20\u573A\u666F/04_02\u90E8\u4EF6_\u868C\u5F0F\u8FDB\u6C14\u9053.unity"
+    guid: d2c7aaa9a4b0f874abb51d51e8633b05
+  m_configObjects:
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: 42b62818f4bb077459d1d5d23cfbc6b3, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1d2a30e2cd9e01d4fb3ac908ede9c35e, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4810220e3ce160145a55ff2a6d3e3dbb, type: 2}
